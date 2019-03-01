@@ -6,13 +6,13 @@ package leetcode._8_String_to_Integer_atoi;
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.myAtoi(" "));
+        System.out.println(solution.isPalindrome(""));
         // Integer.parseInt("1" + Integer.MAX_VALUE);
     }
 
     static
     class Solution {
-        public int myAtoi(String str) {
+        public int isPalindrome(String str) {
             str = str.trim();
             StringBuilder sb = null;
             boolean started = false;
@@ -53,4 +53,5 @@ public class Main {
             }
         }
     }
+
 }

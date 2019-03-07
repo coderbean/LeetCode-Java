@@ -1,5 +1,7 @@
 package leetcode._19_;
 
+import leetcode.common.ListNode;
+
 /**
  * Created by zhangbo54 on 2019-03-04.
  */

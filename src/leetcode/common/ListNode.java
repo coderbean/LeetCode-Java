@@ -1,26 +1,14 @@
-package leetcode._19_;
+package leetcode.common;
 
 /**
  * Created by zhangbo54 on 2019-03-06.
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
-    ListNode(int x) {
+    public ListNode(int x) {
         val = x;
-    }
-
-    public int getVal() {
-        return val;
-    }
-
-    public void setVal(int val) {
-        this.val = val;
-    }
-
-    public ListNode getNext() {
-        return next;
     }
 
     public ListNode setNext(ListNode next) {

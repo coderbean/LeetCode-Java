@@ -48,3 +48,5 @@ class Solution {
 }
         if (rigth >= 0) {
 ```
+
+![](https://ws1.sinaimg.cn/large/006tKfTcgy1g0vm0gawoyj30wx0u0wj1.jpg)

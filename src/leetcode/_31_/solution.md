@@ -1,0 +1,61 @@
+### [31\. Next PermutationCopy for Markdown](https://leetcode.com/problems/next-permutation/)
+
+Difficulty: **Medium**
+
+
+Implement **next permutation**, which rearranges numbers into the lexicographically next greater permutation of numbers.
+
+If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+
+The replacement must be and use only constant extra memory.
+
+Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
+
+`1,2,3` → `1,3,2`  
+`3,2,1` → `1,2,3`  
+`1,1,5` → `1,5,1`
+
+
+#### Solution
+
+Language: **Java**
+
+```java
+class Solution {
+    public void nextPermutation(int[] nums) {
+        this.isDone(nums, 0);
+    }
+​
+    private boolean isDone(int[] nums, int begin) {
+        int end = nums.length;
+        if (end - begin < 1) {
+            return true;
+        }
+        if (end - begin == 2) {
+            boolean result = nums[end - 1] > nums[begin];
+            int temp = nums[end - 1];
+            nums[end - 1] = nums[begin];
+            nums[begin] = temp;
+            return result;
+        }
+        if (this.isDone(nums, begin + 1)) {
+            return true;
+        } else {
+            int tmp = begin + 1;
+            while (tmp < end) {
+                if (nums[begin] < nums[tmp]) {
+                    int temp = nums[begin];
+                    nums[begin] = nums[tmp];
+                    nums[tmp] = temp;
+                    return true;
+                }
+                tmp++;
+            }
+            Arrays.sort(nums, begin, end);
+            return false;  // [1,3,5,2,4]
+        }
+    }
+}
+            while (tmp < end) {
+```
+![](https://ws2.sinaimg.cn/large/006tKfTcgy1g12aolwb05j31050u00xe.jpg)

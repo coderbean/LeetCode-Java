@@ -14,9 +14,7 @@ class Solution {
         }
         if (end - begin == 2) {
             boolean result = nums[end - 1] > nums[begin];
-            int temp = nums[end - 1];
-            nums[end - 1] = nums[begin];
-            nums[begin] = temp;
+            swap(nums, begin, end);
             return result;
         }
         if (this.isDone(nums, begin + 1)) {
@@ -25,9 +23,7 @@ class Solution {
             int tmp = begin + 1;
             while (tmp < end) {
                 if (nums[begin] < nums[tmp]) {
-                    int temp = nums[begin];
-                    nums[begin] = nums[tmp];
-                    nums[tmp] = temp;
+                    swap(nums,begin,tmp);
                     return true;
                 }
                 tmp++;
@@ -35,5 +31,11 @@ class Solution {
             Arrays.sort(nums, begin, end);
             return false;  // [1,3,5,2,4]
         }
+    }
+
+    private void swap(int[] nums, int begin, int end) {
+        int temp = nums[end - 1];
+        nums[end - 1] = nums[begin];
+        nums[begin] = temp;
     }
 }

@@ -1,0 +1,73 @@
+### [38\. Count and SayCopy for MarkdownCopy for Markdown](https://leetcode.com/problems/count-and-say/)
+
+Difficulty: **Easy**
+
+
+The count-and-say sequence is the sequence of integers with the first five terms as following:
+
+```
+1\.     1
+2\.     11
+3\.     21
+4\.     1211
+5\.     111221
+```
+
+`1` is read off as `"one 1"` or `11`.  
+`11` is read off as `"two 1s"` or `21`.  
+`21` is read off as `"one 2`, then `one 1"` or `1211`.
+
+Given an integer _n_ where 1 ≤ _n_ ≤ 30, generate the _n_<sup>th</sup> term of the count-and-say sequence.
+
+Note: Each term of the sequence of integers will be represented as a string.
+
+**Example 1:**
+
+```
+Input: 1
+Output: "1"
+```
+
+**Example 2:**
+
+```
+Input: 4
+Output: "1211"```
+
+
+#### Solution
+
+Language: **Java**
+
+```java
+class Solution {
+    public String countAndSay(int n) {
+        String tmp = "1";
+        if (n == 1) {
+            return tmp;
+        }
+        for (int i = 1; i < n; i++) {
+            tmp = say(tmp);
+        }
+        return tmp;
+    }
+​
+    private String say(String numStr) {
+        char tmp = numStr.charAt(0);
+        int counter = 1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i < numStr.length(); i++) {
+            if (numStr.charAt(i) == numStr.charAt(i - 1)) {
+                counter++;
+            } else {
+                sb.append(counter).append(tmp);
+                tmp = numStr.charAt(i);
+                counter = 1;
+            }
+        }
+        sb.append(counter).append(tmp);
+        return sb.toString();
+    }
+}
+```
+![](https://ws4.sinaimg.cn/large/006tKfTcgy1g1ao5345dcj311e0niq6k.jpg)

@@ -1,0 +1,81 @@
+### [48\. Rotate ImageCopy for MarkdownCopy for Markdown](https://leetcode.com/problems/rotate-image/)
+
+Difficulty: **Medium**
+
+
+You are given an _n_ x _n_ 2D matrix representing an image.
+
+Rotate the image by 90 degrees (clockwise).
+
+**Note:**
+
+You have to rotate the image , which means you have to modify the input 2D matrix directly. **DO NOT** allocate another 2D matrix and do the rotation.
+
+**Example 1:**
+
+```
+Given input matrix = 
+[
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+],
+
+rotate the input matrix in-place such that it becomes:
+[
+  [7,4,1],
+  [8,5,2],
+  [9,6,3]
+]
+```
+
+**Example 2:**
+
+```
+Given input matrix =
+[
+  [ 5, 1, 9,11],
+  [ 2, 4, 8,10],
+  [13, 3, 6, 7],
+  [15,14,12,16]
+], 
+
+rotate the input matrix in-place such that it becomes:
+[
+  [15,13, 2, 5],
+  [14, 3, 4, 1],
+  [12, 6, 8, 9],
+  [16, 7,10,11]
+]
+```
+
+
+#### Solution
+
+Language: **Java**
+
+```java
+class Solution { // 解决这个问题的关键就是知道，图像旋转90度是可以通过先对称镜像，然后对角线镜像可以得到旋转结果
+    public void rotate(int[][] matrix) {
+        // 首先按照水平反转
+​
+        for (int j = 0; j < matrix.length / 2; j++) {
+            for (int i = 0; i < matrix.length; i++) {
+                int tmp = matrix[j][i];
+                matrix[j][i] = matrix[matrix.length - 1 - j][i];
+                matrix[matrix.length - 1 - j][i] = tmp;
+            }
+        }
+        // 然后按照对角线反转
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = i + 1; j < matrix.length; j++) {
+                int tmp = matrix[j][i];
+                matrix[j][i] = matrix[i][j];
+                matrix[i][j] = tmp;
+            }
+        }
+    }
+}
+```
+![](http://ww2.sinaimg.cn/large/006tNc79ly1g4rmwqusm2j31bu0q6n1w.jpg)
+![](http://ww2.sinaimg.cn/large/006tNc79ly1g4rmxspjwaj31410u0ard.jpg)

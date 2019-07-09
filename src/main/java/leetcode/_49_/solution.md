@@ -14,7 +14,8 @@ output:
   ["ate","eat","tea"],
   ["nat","tan"],
   ["bat"]
-]```
+]
+```
 
 **note:**
 

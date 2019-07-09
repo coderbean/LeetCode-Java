@@ -21,6 +21,7 @@
 *.tar.gz
 *.rar
 out/
+target/
 .idea/
 .DS_Store
 

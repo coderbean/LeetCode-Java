@@ -1,4 +1,4 @@
-### [49\. group anagramscopy for markdowncopy for markdown](https://leetcode.com/problems/group-anagrams/)
+### [49\. group anagrams](https://leetcode.com/problems/group-anagrams/)
 
 difficulty: **medium**
 

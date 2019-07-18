@@ -48,4 +48,4 @@ class Solution {
     }
 }
 ```
-![](https://raw.githubusercontent.com/coderbean/PicBed/master/20190718190913.png)
+![](https://raw.githubusercontent.com/PicGoBed/PicBed/master/20190718192526.png)

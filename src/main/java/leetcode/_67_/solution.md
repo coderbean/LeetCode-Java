@@ -1,0 +1,62 @@
+### [67\. Add Binary](https://leetcode.com/problems/add-binary/)
+
+Difficulty: **Easy**
+
+
+Given two binary strings, return their sum (also a binary string).
+
+The input strings are both **non-empty** and contains only characters `1` or `0`.
+
+**Example 1:**
+
+```
+Input: a = "11", b = "1"
+Output: "100"
+```
+
+**Example 2:**
+
+```
+Input: a = "1010", b = "1011"
+Output: "10101"
+```
+
+
+#### Solution
+
+Language: **Java**
+
+```java
+class Solution {
+    public String addBinary(String a, String b) {
+        char[] shortStr;
+        char[] longStr;
+        if (a.length() > b.length()) {
+            shortStr = b.toCharArray();
+            longStr = a.toCharArray();
+        } else {
+            shortStr = a.toCharArray();
+            longStr = b.toCharArray();
+        }
+        int plusNum = 0;
+        int i = longStr.length - 1;
+        int j = shortStr.length - 1;
+        do {
+            int sum = longStr[i] - '0' + plusNum;
+            if (j >= 0) {
+                sum += (shortStr[j] - '0');
+            }
+            longStr[i] = (char) (sum % 2 + '0');
+            plusNum = sum / 2;
+            i--;
+            j--;
+        } while (i >= 0);
+        if (plusNum > 0) {
+            return "1" + String.valueOf(longStr);
+        } else {
+            return String.valueOf(longStr);
+        }
+    }
+}
+```
+![](https://raw.githubusercontent.com/PicGoBed/PicBed/master/20190719175928.png)

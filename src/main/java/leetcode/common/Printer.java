@@ -14,6 +14,7 @@ public class Printer {
             System.out.print(arrays[i] + ",");
         }
         System.out.print(arrays[arrays.length - 1] + "]");
+        System.out.println();
     }
 
     public static void printArrays(int[][] arrays) {

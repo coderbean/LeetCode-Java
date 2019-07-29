@@ -1,35 +1,36 @@
 package leetcode._81_;
 
-import java.util.Arrays;
+import leetcode.common.ListNode;
 
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
+ * }
+ */
 class Solution {
-    public boolean search(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
-        int middle;
-        while (low <= high) {
-            middle = (high + low) / 2;
-            if (nums[middle] == target) {
-                return true;
-            }
-            if (nums[low] < nums[middle] || nums[high] < nums[middle]) { // [low,middle]是升序 或者是[middle,high]
-                if (target >= nums[low] && nums[middle] >= target) { // 普通二分查找就能得到结果
-                    high = middle - 1;
-                } else {
-                    low = middle + 1;
-                }
-
-            } else if (nums[high] > nums[middle] || nums[low] > nums[middle]) { // [low,middle] 必然有对称点
-                if (target <= nums[high] && nums[middle] <= target) { // 普通二分查找就能得到结果
-                    low = middle + 1;
-                } else {
-                    high = middle - 1;
-                }
-
-            } else { // nums[low] == nums[middle] 无法判断是升序还是有对称点
-                high--;
-            }
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
         }
-        return false;
+        ListNode fakeHead = new ListNode(0);
+        fakeHead.next = head;
+        ListNode pre = fakeHead;
+        ListNode curr = head;
+        while (curr != null) {
+            while (curr.next != null && curr.val == curr.next.val) {
+                curr = curr.next;
+            }
+            if (pre.next == curr) { // 说明该次循环没有重复元素
+                pre = pre.next;
+            } else {
+                pre.next = curr.next;
+            }
+            curr = curr.next;
+
+        }
+        return fakeHead.next;
     }
 }

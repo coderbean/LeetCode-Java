@@ -1,31 +1,23 @@
-### [81\. Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/)
+### [82\. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
 
 Difficulty: **Medium**
 
 
-Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
-
-(i.e., `[0,0,1,2,2,5,6]` might become `[2,5,6,0,0,1,2]`).
-
-You are given a target value to search. If found in the array return `true`, otherwise return `false`.
+Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only _distinct_ numbers from the original list.
 
 **Example 1:**
 
 ```
-Input: nums = [2,5,6,0,0,1,2], target = 0
-Output: true
+Input: 1->2->3->3->4->4->5
+Output: 1->2->5
 ```
 
 **Example 2:**
 
 ```
-Input: nums = [2,5,6,0,0,1,2], target = 3
-Output: false```
-
-**Follow up:**
-
-*   This is a follow up problem to , where `nums` may contain duplicates.
-*   Would this affect the run-time complexity? How and why?
+Input: 1->1->1->2->3
+Output: 2->3
+```
 
 
 #### Solution
@@ -33,36 +25,37 @@ Output: false```
 Language: **Java**
 
 ```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode(int x) { val = x; }
+ * }
+ */
 class Solution {
-    public boolean search(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
-        int middle;
-        while (low <= high) {
-            middle = (high + low) / 2;
-            if (nums[middle] == target) {
-                return true;
-            }
-            if (nums[low] < nums[middle] || nums[high] < nums[middle]) { // [low,middle]是升序 或者是[middle,high]
-                if (target >= nums[low] && nums[middle] >= target) { // 普通二分查找就能得到结果
-                    high = middle - 1;
-                } else {
-                    low = middle + 1;
-                }
-​
-            } else if (nums[high] > nums[middle] || nums[low] > nums[middle]) { // [low,middle] 必然有对称点
-                if (target <= nums[high] && nums[middle] <= target) { // 普通二分查找就能得到结果
-                    low = middle + 1;
-                } else {
-                    high = middle - 1;
-                }
-​
-            } else { // nums[low] == nums[middle] 无法判断是升序还是有对称点
-                high--;
-            }
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
         }
-        return false;
+        ListNode fakeHead = new ListNode(0);
+        fakeHead.next = head;
+        ListNode pre = fakeHead;
+        ListNode curr = head;
+        while (curr != null) {
+            while (curr.next != null && curr.val == curr.next.val) {
+                curr = curr.next;
+            }
+            if (pre.next == curr) { // 说明该次循环没有重复元素
+                pre = pre.next;
+            } else {
+                pre.next = curr.next;
+            }
+            curr = curr.next;
+​
+        }
+        return fakeHead.next;
     }
 }
 ```
-![pic](https://raw.githubusercontent.com/PicGoBed/PicBed/master/2019-07-29-fwUbnO.jpg)
+![pic](https://raw.githubusercontent.com/PicGoBed/PicBed/master/2019-07-29-bjF2FD.jpg)

@@ -4,7 +4,6 @@ class Solution {
     public int climbStairs(int n) {
         int[] dp = new int[n + 1];
         return this.climbStairs(dp, n);
-
     }
 
     private int climbStairs(int[] dp, int n) {

@@ -67,4 +67,5 @@
 * [0091. Decode Ways](markdown/0091.%20Decode%20Ways)
 * [0092. Reverse Linked List II](markdown/0092.%20Reverse%20Linked%20List%20II)
 * [0093. Restore IP Addresses](markdown/0093.%20Restore%20IP%20Addresses)
+* [0094. Binary Tree Inorder Traversal](markdown/0094.%20Binary%20Tree%20Inorder%20Traversal)
 * [0146. LRU Cache](markdown/0146.%20LRU%20Cache)
